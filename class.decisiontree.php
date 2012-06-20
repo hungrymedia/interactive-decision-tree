@@ -58,7 +58,7 @@ class DecisionTree{
 			foreach( $xmlData->branch as $branch ){
 				$thisBranch = new Branch();
 				$thisBranch->ID = (string)$branch['id'];
-				$thisBranch->content = (string)$branch->content;
+				$thisBranch->content = stripslashes( htmlspecialchars_decode( (string)$branch->content ) );
 				foreach( $branch->fork as $fork ){
 					$thisBranch->forks[(string)$fork['target']] = (string)$fork;
 				}
