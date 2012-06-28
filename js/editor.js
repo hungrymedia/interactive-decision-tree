@@ -46,4 +46,12 @@ $(document).ready( function(){
 		$(this).parent().remove();
 	});
 	
+	$('#show-reset').click( function(e){
+	  if( $(this).is(":checked") ){
+	    $('#show-name').slideDown().prop("disabled", false);
+	  }else{
+	    $('#show-name').slideUp().prop("disabled", true);
+	  }
+	});
+	
 });

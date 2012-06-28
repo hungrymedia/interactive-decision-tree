@@ -99,6 +99,9 @@ function showTreeForm( $tree, $selectedRevision ){
   	<input type="text" id="title" name="treeTitle" value="<?php echo $tree->title; ?>" /></p>
   <p><label for="description">Description:</label><br />
   	<textarea id="description" name="treeDescription"><?php echo $tree->description; ?></textarea></p>
+  <p><label for="reset">
+		<input type="checkbox" id="show-reset" /> Show Reset?</label><br />
+  	<input type="text" id="reset-name" name="resetName" value="<?php echo $tree->options->resetName; ?>" /></p>
   <p><input type="submit" value="Save" />
 		<input type="hidden" id="treeID" name="treeID" value="<?php echo $tree->treeID; ?>" />
     <input type="hidden" name="cmd" id="cmd" value="save-tree" /></p>
