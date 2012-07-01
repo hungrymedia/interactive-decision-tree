@@ -72,6 +72,8 @@ function buildNodes( xmlData ){
 	});
 	sliderWidth = windowWidth * maxDepth;
 	$('#tree-slider').width( sliderWidth );
+	var resetText = $(xmlData).find('resetText').text();
+	$('#tree-reset').html( resetText );
 	showBranch( 1 );
 }
 

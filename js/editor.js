@@ -46,12 +46,14 @@ $(document).ready( function(){
 		$(this).parent().remove();
 	});
 	
-	$('#show-reset').click( function(e){
-	  if( $(this).is(":checked") ){
-	    $('#show-name').slideDown().prop("disabled", false);
-	  }else{
-	    $('#show-name').slideUp().prop("disabled", true);
-	  }
-	});
+	$('#show-reset').click( 
+	  function(e){
+	    if( $(this).is(':checked') ){
+	      $('#reset-text').prop("disabled", false);
+      }else{
+	      $('#reset-text').prop("disabled", true);
+      }
+	  } 
+	);
 	
 });

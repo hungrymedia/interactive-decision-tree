@@ -4,6 +4,7 @@ class DecisionTree{
 	var $treeID;
 	var $title;
 	var $description;
+	var $resetText;
 	var $branches = array();
 	var $revisions = array();
 	var $xmlDirPath = XML_DIR_PATH;
@@ -33,6 +34,7 @@ class DecisionTree{
 		if( $xmlData = simplexml_load_file( $revisionFile ) ){
 			$this->title = (string)$xmlData->title;
 			$this->description = (string)$xmlData->description;
+			$this->resetText = (string)$xmlData->resetText;
 			$this->branches = array();
 			foreach( $xmlData->branch as $branch ){
 				$thisBranch = new Branch();
@@ -55,6 +57,7 @@ class DecisionTree{
 		if( $xmlData = simplexml_load_file( $this->xmlDirPath . $this->treeID ) ){
 			$this->title = (string)$xmlData->title;
 			$this->description = (string)$xmlData->description;
+			$this->resetText = (string)$xmlData->resetText;
 			foreach( $xmlData->branch as $branch ){
 				$thisBranch = new Branch();
 				$thisBranch->ID = (string)$branch['id'];
@@ -121,6 +124,9 @@ class DecisionTree{
 		$xmlData = new SimpleXMLElement("<tree></tree>");
 		$xmlData->addChild( 'title', $this->title );
 		$xmlData->addChild( 'description', $this->description );
+		if( !empty( $this->resetText ) ){
+			$xmlData->addChild( 'resetText', $this->resetText );
+		}
 		foreach( $this->branches as $branch ){
 			$branchXML = $xmlData->addChild( 'branch' );
 			$branchXML->addAttribute( 'id', $branch->ID );

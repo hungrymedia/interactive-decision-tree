@@ -21,7 +21,7 @@ if( !empty( $revision ) ){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Interactive Decision Tree - Editor</title>
 <link href="css/editor.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/editor.js"></script>
 </head>
 
@@ -90,6 +90,8 @@ function showTreeForm( $tree, $selectedRevision ){
 			}
 			echo '<option ' . $selectedHTML . ' value="' . $revisionTS . '">' . $revisionTime . '</option>';
 		}
+		$checkedHTML = '';
+		if( !empty( $tree->resetText ) ){ $checkedHTML = 'checked'; }
 		?>
   </select>
   <?php
@@ -100,8 +102,8 @@ function showTreeForm( $tree, $selectedRevision ){
   <p><label for="description">Description:</label><br />
   	<textarea id="description" name="treeDescription"><?php echo $tree->description; ?></textarea></p>
   <p><label for="reset">
-		<input type="checkbox" id="show-reset" /> Show Reset?</label><br />
-  	<input type="text" id="reset-name" name="resetName" value="<?php echo $tree->options->resetName; ?>" /></p>
+		<input type="checkbox" id="show-reset" <?php echo $checkedHTML; ?> /> Show reset/home link?</label><br />
+  	<input type="text" id="reset-text" name="resetText" placeholder="text for link (e.g. Start again)" disabled value="<?php echo $tree->resetText; ?>" /></p>
   <p><input type="submit" value="Save" />
 		<input type="hidden" id="treeID" name="treeID" value="<?php echo $tree->treeID; ?>" />
     <input type="hidden" name="cmd" id="cmd" value="save-tree" /></p>
@@ -118,6 +120,7 @@ function saveTree( $tree, $selectedRevision ){
 	}
 	$tree->title = Util::makeVar( 'treeTitle' );
 	$tree->description = Util::makeVar( 'treeDescription' );
+	$tree->resetText = Util::makeVar( 'resetText' );
 	$tree->saveData();
 }
 
