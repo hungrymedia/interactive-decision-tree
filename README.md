@@ -24,4 +24,4 @@ That's it. You should see a couple of example decision trees in the editor to ex
 
 # License
 
-[http://wph.mit-license.org/](http://wph.mit-license.org/)
+[http://wph.mit-license.org/](http://wph.mit-license.org/2011)
