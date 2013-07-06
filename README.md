@@ -26,7 +26,7 @@ That's it. You should see a couple of example decision trees in the editor to ex
 
 The MIT License (MIT)
 
-Copyright (c) 20133 Warren Harrison
+Copyright (c) 2013 Warren Harrison
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
