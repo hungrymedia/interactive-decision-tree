@@ -1,4 +1,4 @@
-var treeData;
+var treeData, qsVals, branchID, treeID;
 $(document).ready( function(){
 	
 	windowWidth = $('#tree-window').outerWidth( false );
@@ -8,7 +8,12 @@ $(document).ready( function(){
 	options = {};
 	var thisURL = new String(document.location);
 	var urlParts = thisURL.split('?');
-	loadData( urlParts[1] );
+  qsVals = urlParts[1].split('&');
+  treeID = qsVals[0];
+  console.log(qsVals);
+  console.log(qsVals.length);
+  if(qsVals.length > 1){ branchID = qsVals[1]; }
+	loadData( treeID );
 	
 	$('#tree-reset').click( function(e){
 	  console.log("RESET");
@@ -74,7 +79,11 @@ function buildNodes( xmlData ){
 	$('#tree-slider').width( sliderWidth );
 	var resetText = $(xmlData).find('resetText').text();
 	$('#tree-reset').html( resetText );
-	showBranch( 1 );
+  if(typeof branchID !== 'undefined'){
+    showBranch(branchID);
+  }else{
+  	showBranch(1);
+  }
 }
 
 function resetActionLinks(){
@@ -95,6 +104,7 @@ function resetActionLinks(){
 }
 
 function showBranch( id ){
+  console.log(id);
 	for(i = 0; i < branches.length; i++ ){
 		if( branches[i].id == id ){
 			var currentBranch = branches[i];
