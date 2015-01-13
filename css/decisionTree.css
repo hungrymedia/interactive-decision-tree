@@ -1,70 +1,56 @@
 body{
-	background: #FFF;
-	color: #333;
-	font-family: Geneva, Arial, Helvetica, sans-serif;
-	font-size: medium;
+  background: #FFF;
+  color: #333;
+  font-family: Geneva, Arial, Helvetica, sans-serif;
+  font-size: medium;
 }
 
 a{
  cursor: pointer;
  color: #666;
 }
-a:hover{
-	text-decoration: underline;
+ul.tree{
+  position: relative;
+  overflow: hidden;
+  width: 800px;
+  height: 600px;
+  margin: 0;
+  padding: 0;
+  background: #FF9;
 }
-.decision-links a{
- margin-right: 1em;
- padding-right: 1em;
- border-right: 1px solid #666;
+ul.tree > li{
+  position: absolute;
+  margin: 0;
+  padding: 5%;
+  width: 90%;
+  list-style-type: none;
+  left: 100%;
+  -webkit-transition: left 0.5s;
+  transition: left 0.5s;
 }
-.decision-links a.last-child{
-	border: none;
+ul.tree li.active{
+  left: 0;
 }
-
-#debug{
-	position: absolute;
-	right: 0;
-	width: 300px;
-	font-size: small;
-	background: #EEE;
-	color: #000;
-	padding: 1em;
-	/*
-	display: none;
-	*/
+ul.tree li.previous{
+  left: -100%;
 }
-
-#tree-window{
-	margin: 0;
-	padding: 0;
-	background: #FFA;
-	width: 750px;
-	height: 500px;
-	overflow: hidden;
+ul.tree li ul{
+  margin: 0;
+  padding: 0;
 }
-#tree-slider{
-	margin: 0;
-	padding: 0;
-	height: 600px;
-	width: 2000px;
+ul.tree li ul li{
+  position: relative;
+  display: inline;
+  margin: 0 1em 0 0;
+  padding: 0 1em 0 0;
+  border-right: 1px solid #333;
 }
-.tree-content-box{
-	margin: 0;
-	padding: 15px;
-	float: left;
-	width: 720px;
-	font-size: 2em;
+ul.tree li ul li:last-child{
+  padding: 0;
+  margin: 0;
+  border: none;
 }
-.decision-links{
-	margin-top: 1em;
-	padding-top: 1em;
-	border-top: 1px solid #666;
-	text-align: left;
-	font-size: 0.5em;
-}
-.back-link{
-	display: block;
-	margin-top: 2em;
-	font-size: 0.4em;
-	border: none;
+a.back-branch{
+  position: absolute;
+  bottom: 0;
 }
