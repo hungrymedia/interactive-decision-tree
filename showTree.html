@@ -52,6 +52,10 @@
 
   // gather querystring params
   var params = document.location.search.substr(1).split('&');
+  if(params.length > 0){
+    loadData(params[0]);
+  }
+
   if(params.length > 1){
     $('#'+params[1]).addClass('active');
   }else{
@@ -84,6 +88,26 @@
         '<a href="#" class="back-branch">&laquo; back</a>'
       );
     }
+  }
+
+  function loadData(id){
+    $.ajax({
+      type: "GET", 
+      url: "xml/tree" + id + ".xml", 
+      dataType: "xml", 
+      success: function(xml){
+        buildHTML(xml);
+      }
+    });
+  }
+
+  function buildHTML(xml){
+    $('.tree').empty();
+    $(xmlData).find('branch').each(
+      function(){
+        $('<li id=""></li>').appendTo('.tree');
+      }
+    );
   }
 </script>
 </body>
