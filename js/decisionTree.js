@@ -10,8 +10,6 @@ $(document).ready( function(){
 	var urlParts = thisURL.split('?');
   qsVals = urlParts[1].split('&');
   treeID = qsVals[0];
-  console.log(qsVals);
-  console.log(qsVals.length);
   if(qsVals.length > 1){ branchID = qsVals[1]; }
 	loadData( treeID );
 	
@@ -104,7 +102,6 @@ function resetActionLinks(){
 }
 
 function showBranch( id ){
-  console.log(id);
 	for(i = 0; i < branches.length; i++ ){
 		if( branches[i].id == id ){
 			var currentBranch = branches[i];
@@ -126,9 +123,10 @@ function showBranch( id ){
 		branchHTML += '<a class="back-link">&laquo; Back</a>';
 	}
 	branchHTML += '</div>';
+  console.log(branchHTML);
 	$('#tree-slider').append( branchHTML );
 	resetActionLinks();
-	if( currentBranch.id != 1 ){
+	if( currentBranch.id != '1' ){
 		$('#tree-window').scrollTo( '+=' + windowWidth + 'px', { axis:'x', duration:slideTime, easing:'easeInOutExpo' } );
 	}
 	// add last-child class for IE

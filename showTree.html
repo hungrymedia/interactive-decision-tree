@@ -52,9 +52,7 @@
 
   // gather querystring params
   var params = document.location.search.substr(1).split('&');
-  if(params.length > 0){
-    loadData(params[0]);
-  }
+  if(params[0] != ''){ loadData(params[0]); }
 
   if(params.length > 1){
     $('#'+params[1]).addClass('active');
@@ -105,7 +103,12 @@
     $('.tree').empty();
     $(xmlData).find('branch').each(
       function(){
-        $('<li id=""></li>').appendTo('.tree');
+        branchID = $(this).attr('id').replace('.','-');
+        $('.tree').append(
+          '<li id="branch-'+branchID+'">
+            <p>'+$(this).find('content').text()+'</p>
+          </li>'
+        );
       }
     );
   }
